@@ -16,6 +16,6 @@ MonoBehaviour:
   speed: 30
   descend: -1
   maxTilt: 15
-  maxRotateSpeed: 0.4
+  maxRotateSpeed: 5
   continuousCoefficient: 0.8
   turnSharpnes: 0.3

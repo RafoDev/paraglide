@@ -113,24 +113,24 @@ public class Logger : MonoBehaviour
     // Return true if saving is successful, false otherwise
     public bool SaveLog()
     {
-        Globals.SetLive(false);
-        Header header = new Header((DateTime.Now - startTime).TotalSeconds, Globals.samplingFrequency, terrain.name, JsonUtility.ToJson(PK.GetComponent<Movement>().pk));
+        // Globals.SetLive(false);
+        // Header header = new Header((DateTime.Now - startTime).TotalSeconds, Globals.samplingFrequency, terrain.name, JsonUtility.ToJson(PK.GetComponent<Movement>().pk));
 
-        SaveObject saveObject = new SaveObject(header, windCurrentPositions, windCurrentSpeeds, windCurrentScales, windCurrentRotations, PKPositons, PKRotations,
-                                rightControllerPositions, leftControllerPositions, headRotations, currentSpeeds, windIntensities, windDirections);
+        // SaveObject saveObject = new SaveObject(header, windCurrentPositions, windCurrentSpeeds, windCurrentScales, windCurrentRotations, PKPositons, PKRotations,
+        //                         rightControllerPositions, leftControllerPositions, headRotations, currentSpeeds, windIntensities, windDirections);
 
-        Debug.Log(saveObject.ToString());
-        string json = JsonUtility.ToJson(saveObject, true);
+        // Debug.Log(saveObject.ToString());
+        // string json = JsonUtility.ToJson(saveObject, true);
 
-        try
-        {
-            File.WriteAllText(Globals.saveFolder + GenerateSaveFormat(), json);
-        }
-        catch (IOException e)
-        {
-            Debug.LogError(e.Message.ToString());
-            return false;
-        }
+        // try
+        // {
+        //     File.WriteAllText(Globals.saveFolder + GenerateSaveFormat(), json);
+        // }
+        // catch (IOException e)
+        // {
+        //     Debug.LogError(e.Message.ToString());
+        //     return false;
+        // }
         return true;
     }
 

@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
     private float descend;                 // Paraglide's descend speed 
     
     //CHANGE
-    private bool restoreSpeed = true;      // Bool to decide whether to restore paraglide's default speed
+    private bool restoreSpeed = false;      // Bool to decide whether to restore paraglide's default speed
     private bool restoreDescend = true;    // Bool to decide whether to restore paraglide's default descend speed
     public float turnY;                    // Paraglide's current rotation around y-axis
     private Rigidbody rb;       
@@ -86,7 +86,7 @@ public class Movement : MonoBehaviour
             rotateThree = pk.maxRotateSpeed;
         }
  
-        speed = 20+(pk.speed);
+        speed = 200;
         descend = pk.descend;
         rb = GetComponent<Rigidbody>();
         envPhysics = GameObject.Find("Environment Physics").GetComponent<EnvironmentPhysics>();
@@ -154,7 +154,7 @@ public class Movement : MonoBehaviour
         // Right above level 1
         if (rightY > lvlOne)
         {
-            restoreSpeed = true;
+            // restoreSpeed = true;
             restoreDescend = true;
             if (leftY > lvlOne)                             // Left above level 1
                 controllerTiltZ = 0f;
@@ -178,7 +178,7 @@ public class Movement : MonoBehaviour
         else if (rightY <= lvlOne && rightY >= lvlTwo)     
         {
             restoreDescend = true;
-            restoreSpeed = true;
+            // restoreSpeed = true;
             if (leftY > lvlOne)                            // Left above level 1
             {
                 controllerTiltZ = -1 * tiltOne;
@@ -211,7 +211,7 @@ public class Movement : MonoBehaviour
         // Right between levels 2 and 3
         else if (rightY < lvlTwo && rightY >= lvlThree)
         {
-            restoreSpeed = true;
+            // restoreSpeed = true;
             restoreDescend = true;
             if (leftY > lvlOne)                            // Left above level 1
             {
@@ -244,7 +244,7 @@ public class Movement : MonoBehaviour
         // right below level 3
         else
         {
-            restoreSpeed = true;
+            // restoreSpeed = true;
             restoreDescend = true;
             if (leftY > lvlOne)                            // Left above level 1
             {
@@ -307,11 +307,20 @@ public class Movement : MonoBehaviour
         return (diff1h&&diff2h&&hombros);
     }
 
-     private bool calculatePosition_foot(Vector3 der,Vector3 izq){
+     private bool calculatePosition_foot(Vector3 head, Vector3 point1, Vector3 point2,Vector3 point1_s, Vector3 point2_s){
 
-         diff = der.x > izq.x;
-        Debug.Log("GANA ALTURA der: " + der.x  + ", izq: " + izq.x);
-        return (diff);
+  diff1h = head.y < point1.y;
+         diff2h = head.y < point2.y;
+        // Aseggurar que los brasos esten abiertos y no solo hacia arriba
+         diff1s = point1.z < point1_s.z;
+         diff2s = point2.z > point2_s.z;
+          hombros=false;
+        // Comprobamos si las muñecas están más alejadas que los hombros en el eje x
+        if (diff1s&&diff2s) {
+            hombros=true;
+        }
+
+        return (diff1h&&diff2h&&hombros);
     }
     
     /// <summary>
@@ -345,10 +354,15 @@ public class Movement : MonoBehaviour
                 _BodyManager.GetBodyJointPos(Windows.Kinect.JointType.ShoulderLeft),
                 _BodyManager.GetBodyJointPos(Windows.Kinect.JointType.ShoulderRight));
         
-            bool altura=calculatePosition_foot(_BodyManager.GetBodyJointPos(Windows.Kinect.JointType.AnkleRight),
-            _BodyManager.GetBodyJointPos(Windows.Kinect.JointType.AnkleLeft));
+            bool altura=calculatePosition_foot(_BodyManager.GetBodyJointPos(Windows.Kinect.JointType.Head),
+                _BodyManager.GetBodyJointPos(Windows.Kinect.JointType.WristLeft),
+                _BodyManager.GetBodyJointPos(Windows.Kinect.JointType.WristRight),
+                _BodyManager.GetBodyJointPos(Windows.Kinect.JointType.ShoulderLeft),
+                _BodyManager.GetBodyJointPos(Windows.Kinect.JointType.ShoulderRight));
         if(altura){
-            headPosition=headPosition- 0.6f;
+        //    GameObject.Find("PK").transform.Find("XR Rig").transform.Find("Camera Offset").transform.Find("Main Camera").transform.localPosition.y= headPosition- 1.6f;
+           GameObject.Find("PK").transform.localPosition = GameObject.Find("PK").transform.localPosition - new Vector3(0,5,0);
+
         }
         // If controllers are below headset and approximately in the same height, slow down the paraglide and adjust descend speed
         // and stop trying to restore paraglide's speed, as it's being adjusted by the pilot
@@ -373,7 +387,7 @@ public class Movement : MonoBehaviour
 
         }
         else{
-             restoreSpeed = true;
+             // restoreSpeed = true;
             restoreDescend = true;
         }
 

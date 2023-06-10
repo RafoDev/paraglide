@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/NuitrackSDK/Tutorials/RGBandSkeletons/FinalAssets/Calibration.unity
+    guid: fd896ab471bbc144c8308776d62a01d1
+  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 8a6538551eb4378408c204e6e6560ea9
   - enabled: 1
@@ -20,6 +23,8 @@ EditorBuildSettings:
     com.unity.input.settings: {fileID: 11400000, guid: 401298737b2bbd749a4c18eb27d3bb3b,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1a4c68ca72a83449f938d669337cb305,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 0892b22914de5694e9c5e713b401c839,
       type: 2}
     xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: ddf60a4c97e92cd4a872ae4d97aba3ed,
       type: 2}

@@ -27,6 +27,7 @@ public class Landing : MonoBehaviour
     /// <param name="other"> Collider of an other object </param>
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Me choqueeee");
         if (other.CompareTag("Good Landing"))
         {
             menu.ShowLandingEvalution(0);
@@ -46,6 +47,8 @@ public class Landing : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Me choqueeee");
+
         if (collision.gameObject.CompareTag("Bad Landing"))
         {
             menu.ShowLandingEvalution(2);

@@ -68,7 +68,7 @@ public class GuidelineManager : MonoBehaviour
             // Set the default pole material to electric poles
             foreach (GameObject obj in electricityPoles)
             {
-                obj.GetComponent<Renderer>().material = defaultElectricityPolesMaterial;
+                //obj.GetComponent<Renderer>().material = defaultElectricityPolesMaterial;
             }
         }
 
@@ -117,9 +117,9 @@ public class GuidelineManager : MonoBehaviour
 
         for (int i = 0; i < middleLanePositions.Length; i++)
         {
-            middleCablePositions.Add(middleLanePositions[i].transform.position);
-            leftCablePositions.Add(leftLanePositions[i].transform.position);
-            rightCablePositions.Add(rightLanePositions[i].transform.position);
+//            middleCablePositions.Add(middleLanePositions[i].transform.position);
+//            leftCablePositions.Add(leftLanePositions[i].transform.position);
+//            rightCablePositions.Add(rightLanePositions[i].transform.position);
         }
 
         if (guidelinesOn)
