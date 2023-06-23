@@ -81,7 +81,7 @@ public class MyBodySourceManager : MonoBehaviour
   {
     if (firstBody == null) return Vector3.zero;
     Windows.Kinect.Joint myJoint = firstBody.Joints[jt];
-    return new Vector3(myJoint.Position.X * 1, myJoint.Position.Y * 1, myJoint.Position.Z * 1);
+    return new Vector3(myJoint.Position.X * -1, myJoint.Position.Y * 1, myJoint.Position.Z * 1);
   }
 
   void Update()

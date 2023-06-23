@@ -76,22 +76,25 @@ public class MovementAdvanced : MonoBehaviour
     // //leftY = left.transform.localPosition.y;
     // rightY = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.WristRight).y;
     // leftY = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.WristLeft).y;
-    Head.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.Head);
-    Neck.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.Neck);
-    SpineShoulder.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.SpineShoulder);
-    ShoulderRight.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.ShoulderRight);
-    ElbowRight.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.ElbowRight);
-    WristRight.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.WristRight);
-    ShoulderLeft.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.ShoulderLeft);
-    ElbowLeft.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.ElbowLeft);
-    WristLeft.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.WristLeft);
-    SpineBase.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.SpineBase);
-    HipRight.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.HipRight);
-    KneeRight.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.KneeRight);
-    FootRight.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.FootRight);
-    HipLeft.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.HipLeft);
-    KneeLeft.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.KneeLeft);
-    FootLeft.position = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.FootLeft);
+    //  float headPosition = GameObject.Find("PK").transform.Find("XR Rig").transform.Find("Camera Offset").transform.Find("Main Camera").transform.localPosition.y;
+    //  transform.localPosition = new Vector3(transform.localPosition.x, headPosition - 1.3f, transform.localPosition.z);
+
+    Head.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.Head);
+    Neck.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.Neck);
+    SpineShoulder.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.SpineShoulder);
+    ShoulderRight.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.ShoulderRight);
+    ElbowRight.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.ElbowRight);
+    WristRight.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.WristRight);
+    ShoulderLeft.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.ShoulderLeft);
+    ElbowLeft.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.ElbowLeft);
+    WristLeft.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.WristLeft);
+    SpineBase.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.SpineBase);
+    HipRight.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.HipRight);
+    KneeRight.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.KneeRight);
+    FootRight.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.FootRight);
+    HipLeft.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.HipLeft);
+    KneeLeft.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.KneeLeft);
+    FootLeft.localPosition = _BodyManager.GetBodyJointPosModded(Windows.Kinect.JointType.FootLeft);
     // Rotate paraglide according to chosen controls
     //Debug.Log("continuousRotation: " + Globals.continuousRotation + ", isFlying: " + Globals.isFlying + ", isPaused: " + Globals.isPaused);
     //CHANGE: ALWAYS TRUE
